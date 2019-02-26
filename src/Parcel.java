@@ -26,7 +26,7 @@ public class Parcel {
                 cost += 15 + Math.max(0, this.weight-6)*2;
                 break;
             case XL:
-                cost += 25 + Math.max(0, this.weight-10)*2;
+                cost += 50 + Math.max(0, this.weight-50);
                 break;
             default:
                 break;
