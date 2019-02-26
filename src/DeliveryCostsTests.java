@@ -66,5 +66,18 @@ public class DeliveryCostsTests {
         assertEquals(delivery.calculateTotalCost(), 0);
     }
 
+    @Test
+    public void fastDeliveryNoImpactOnItem() {
+        List<Parcel> parcels = new ArrayList<>();
+        Parcel large = new Parcel(Type.Large);
+        Parcel medium = new Parcel(Type.Medium);
+        parcels.add(large);
+        parcels.add(medium);
+        Delivery fastDelivery = new Delivery(parcels, true);
+        Delivery delivery = new Delivery(parcels, false);
+        assertEquals(delivery.calculateTotalCost(), 23);
+        assertEquals(fastDelivery.calculateTotalCost(), 46);
+    }
+
 
 }

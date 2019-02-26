@@ -20,6 +20,9 @@ public class Delivery {
         for (Parcel p : parcels){
             res += p.getCost();
         }
+        if(fastShipping){
+            res *= 2;
+        }
         return res;
     }
 }
