@@ -162,4 +162,14 @@ public class DeliveryCostsTests {
         assertEquals(delivery.calculateTotalCost(), 53);
     }
 
+    @Test
+    public void parcelComparison() {
+        assertTrue(new Parcel(Type.Medium, 3).compareTo(new Parcel(Type.Medium, 5)) == -1);
+        assertTrue(new Parcel(Type.Medium, 3).compareTo(new Parcel(Type.Medium, 3)) == 0);
+        assertTrue(new Parcel(Type.Medium, 3).compareTo(new Parcel(Type.Medium, 1)) == 1);
+        assertTrue(new Parcel(Type.Small, 3).compareTo(new Parcel(Type.Medium, 5)) == -1);
+        assertTrue(new Parcel(Type.Large, 70).compareTo(new Parcel(Type.XL, 5)) == -1);
+        assertTrue(new Parcel(Type.Medium, 50).compareTo(new Parcel(Type.Small, 5)) == 1);
+    }
+
 }
