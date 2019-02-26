@@ -9,7 +9,7 @@ public class DeliveryCostsTests {
     @Test
     public void fixedDeliveryCostsSmall() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel("Small"));
+        parcels.add(new Parcel(Type.Small));
         Delivery delivery = new Delivery(parcels);
 
         assertEquals(delivery.calculateTotalCost(), 3);
@@ -18,13 +18,21 @@ public class DeliveryCostsTests {
     @Test
     public void fixedDeliveryCostsMultipleItems() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel("Medium"));
-        parcels.add(new Parcel("Medium"));
-        parcels.add(new Parcel("Large"));
-        parcels.add(new Parcel("Medium"));
-        parcels.add(new Parcel("XL"));
+        parcels.add(new Parcel(Type.Medium));
+        parcels.add(new Parcel(Type.Medium));
+        parcels.add(new Parcel(Type.Large));
+        parcels.add(new Parcel(Type.Medium));
+        parcels.add(new Parcel(Type.XL));
         Delivery delivery = new Delivery(parcels);
 
         assertEquals(delivery.calculateTotalCost(), 64);
+    }
+
+    @Test
+    public void fixedDeliveryCostsNoItem() {
+        List<Parcel> parcels = new ArrayList<>();
+        Delivery delivery = new Delivery(parcels);
+
+        assertEquals(delivery.calculateTotalCost(), 0);
     }
 }

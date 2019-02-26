@@ -9,6 +9,10 @@ public class Delivery {
     }
 
     public int calculateTotalCost(){
-        return 0;
+        int res = 0;
+        for (Parcel p : parcels){
+            res += p.getCost();
+        }
+        return res;
     }
 }
