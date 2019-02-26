@@ -111,4 +111,55 @@ public class DeliveryCostsTests {
         assertEquals(delivery.calculateTotalCost(), 140);
     }
 
+    @Test
+    public void deliveryCostsWithManyParcels() {
+        List<Parcel> parcels = new ArrayList<>();
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(Type.Medium, 4));
+        Delivery delivery = new Delivery(parcels);
+
+        assertEquals(delivery.calculateTotalCost(), 36);
+    }
+
+    @Test
+    public void fastDeliveryCostsWithManyParcels() {
+        List<Parcel> parcels = new ArrayList<>();
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(Type.Medium, 4));
+        Delivery delivery = new Delivery(parcels, true);
+
+        assertEquals(delivery.calculateTotalCost(), 72);
+    }
+
+    @Test
+    public void multipleDeliveryCostsWithManyParcels2() {
+        List<Parcel> parcels = new ArrayList<>();
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 3));
+        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(Type.Medium, 4));
+
+        parcels.add(new Parcel(Type.Small, 1));
+        parcels.add(new Parcel(Type.Small, 1));
+        parcels.add(new Parcel(Type.Small, 2));
+        parcels.add(new Parcel(Type.Small, 2));
+
+        Delivery delivery = new Delivery(parcels, true);
+        assertEquals(delivery.calculateTotalCost(), 106);
+
+        Delivery delivery2 = new Delivery(parcels, false);
+        assertEquals(delivery.calculateTotalCost(), 53);
+    }
+
 }
