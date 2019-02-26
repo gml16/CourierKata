@@ -1,16 +1,20 @@
 public class Parcel implements Comparable<Parcel>{
 
-    final private Type type;
+    final private TYPE type;
     final private int weight;
 
-    public Parcel(Type type) {
+    public Parcel(TYPE type) {
         this.type = type;
         this.weight = 0;
     }
 
-    public Parcel(Type type, int weight) {
+    public Parcel(TYPE type, int weight) {
         this.type = type;
         this.weight = weight;
+    }
+
+    public TYPE getType(){
+        return type;
     }
 
     public int getCost() {
@@ -32,6 +36,11 @@ public class Parcel implements Comparable<Parcel>{
                 break;
         }
         return cost;
+    }
+
+    @Override
+    public String toString(){
+        return "Parcel " + this.type + " has weight " + weight;
     }
 
     @Override
