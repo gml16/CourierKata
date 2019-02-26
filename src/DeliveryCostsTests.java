@@ -9,7 +9,7 @@ public class DeliveryCostsTests {
     @Test
     public void fixedDeliveryCostsSmall() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Small));
+        parcels.add(new Parcel(TYPE.Small));
         Delivery delivery = new Delivery(parcels);
 
         assertEquals(delivery.calculateTotalCost(), 3);
@@ -18,14 +18,14 @@ public class DeliveryCostsTests {
     @Test
     public void fixedDeliveryCostsMultipleItems() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Medium));
-        parcels.add(new Parcel(Type.Medium));
-        parcels.add(new Parcel(Type.Large));
-        parcels.add(new Parcel(Type.Medium));
-        parcels.add(new Parcel(Type.XL));
+        parcels.add(new Parcel(TYPE.Medium));
+        parcels.add(new Parcel(TYPE.Medium));
+        parcels.add(new Parcel(TYPE.Large));
+        parcels.add(new Parcel(TYPE.Medium));
+        parcels.add(new Parcel(TYPE.XL));
         Delivery delivery = new Delivery(parcels);
 
-        assertEquals(delivery.calculateTotalCost(), 89);
+        assertEquals(delivery.calculateTotalCost(), 81);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class DeliveryCostsTests {
     @Test
     public void fastDeliveryCostsSmall() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.XL));
+        parcels.add(new Parcel(TYPE.XL));
         Delivery delivery = new Delivery(parcels, true);
 
         assertEquals(delivery.calculateTotalCost(), 100);
@@ -48,11 +48,11 @@ public class DeliveryCostsTests {
     @Test
     public void fastDeliveryCostsMultipleItems() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Small));
-        parcels.add(new Parcel(Type.Medium));
-        parcels.add(new Parcel(Type.Large));
-        parcels.add(new Parcel(Type.Medium));
-        parcels.add(new Parcel(Type.XL));
+        parcels.add(new Parcel(TYPE.Small));
+        parcels.add(new Parcel(TYPE.Medium));
+        parcels.add(new Parcel(TYPE.Large));
+        parcels.add(new Parcel(TYPE.Medium));
+        parcels.add(new Parcel(TYPE.XL));
         Delivery delivery = new Delivery(parcels, true);
 
         assertEquals(delivery.calculateTotalCost(), 168);
@@ -69,8 +69,8 @@ public class DeliveryCostsTests {
     @Test
     public void fastDeliveryNoImpactOnItem() {
         List<Parcel> parcels = new ArrayList<>();
-        Parcel large = new Parcel(Type.Large);
-        Parcel medium = new Parcel(Type.Medium);
+        Parcel large = new Parcel(TYPE.Large);
+        Parcel medium = new Parcel(TYPE.Medium);
         parcels.add(large);
         parcels.add(medium);
         Delivery fastDelivery = new Delivery(parcels, true);
@@ -82,7 +82,7 @@ public class DeliveryCostsTests {
     @Test
     public void weightDeliveryCostsOverWeight() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Small, 3));
+        parcels.add(new Parcel(TYPE.Small, 3));
         Delivery delivery = new Delivery(parcels);
 
         assertEquals(delivery.calculateTotalCost(), 7);
@@ -91,9 +91,9 @@ public class DeliveryCostsTests {
     @Test
     public void weightDeliveryCostsMixedWeights() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Small, 3));
-        parcels.add(new Parcel(Type.Medium, 4));
-        parcels.add(new Parcel(Type.Large, 2));
+        parcels.add(new Parcel(TYPE.Small, 3));
+        parcels.add(new Parcel(TYPE.Medium, 4));
+        parcels.add(new Parcel(TYPE.Large, 2));
         Delivery delivery = new Delivery(parcels);
 
         assertEquals(delivery.calculateTotalCost(), 32);
@@ -102,10 +102,10 @@ public class DeliveryCostsTests {
     @Test
     public void weightDeliveryCostsMixedWeightsWithXL() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Small, 3));
-        parcels.add(new Parcel(Type.Medium, 4));
-        parcels.add(new Parcel(Type.Large, 30));
-        parcels.add(new Parcel(Type.XL, 60));
+        parcels.add(new Parcel(TYPE.Small, 3));
+        parcels.add(new Parcel(TYPE.Medium, 4));
+        parcels.add(new Parcel(TYPE.Large, 30));
+        parcels.add(new Parcel(TYPE.XL, 60));
         Delivery delivery = new Delivery(parcels);
 
         assertEquals(delivery.calculateTotalCost(), 140);
@@ -114,12 +114,12 @@ public class DeliveryCostsTests {
     @Test
     public void deliveryCostsWithManyParcels() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 4));
-        parcels.add(new Parcel(Type.Medium, 4));
-        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 4));
         Delivery delivery = new Delivery(parcels);
 
         assertEquals(delivery.calculateTotalCost(), 36);
@@ -128,12 +128,12 @@ public class DeliveryCostsTests {
     @Test
     public void fastDeliveryCostsWithManyParcels() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 4));
-        parcels.add(new Parcel(Type.Medium, 4));
-        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 4));
         Delivery delivery = new Delivery(parcels, true);
 
         assertEquals(delivery.calculateTotalCost(), 72);
@@ -142,34 +142,34 @@ public class DeliveryCostsTests {
     @Test
     public void multipleDeliveryCostsWithManyParcels2() {
         List<Parcel> parcels = new ArrayList<>();
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 3));
-        parcels.add(new Parcel(Type.Medium, 4));
-        parcels.add(new Parcel(Type.Medium, 4));
-        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 3));
+        parcels.add(new Parcel(TYPE.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 4));
+        parcels.add(new Parcel(TYPE.Medium, 4));
 
-        parcels.add(new Parcel(Type.Small, 1));
-        parcels.add(new Parcel(Type.Small, 1));
-        parcels.add(new Parcel(Type.Small, 2));
-        parcels.add(new Parcel(Type.Small, 2));
+        parcels.add(new Parcel(TYPE.Small, 1));
+        parcels.add(new Parcel(TYPE.Small, 1));
+        parcels.add(new Parcel(TYPE.Small, 2));
+        parcels.add(new Parcel(TYPE.Small, 2));
 
         Delivery delivery = new Delivery(parcels, true);
-        assertEquals(delivery.calculateTotalCost(), 106);
+        assertEquals(delivery.calculateTotalCost(), 114);
 
         Delivery delivery2 = new Delivery(parcels, false);
-        assertEquals(delivery.calculateTotalCost(), 53);
+        assertEquals(delivery2.calculateTotalCost(), 57);
     }
 
     @Test
     public void parcelComparison() {
-        assertTrue(new Parcel(Type.Medium, 3).compareTo(new Parcel(Type.Medium, 5)) == -1);
-        assertTrue(new Parcel(Type.Medium, 3).compareTo(new Parcel(Type.Medium, 3)) == 0);
-        assertTrue(new Parcel(Type.Medium, 3).compareTo(new Parcel(Type.Medium, 1)) == 1);
-        assertTrue(new Parcel(Type.Small, 3).compareTo(new Parcel(Type.Medium, 5)) == -1);
-        assertTrue(new Parcel(Type.Large, 70).compareTo(new Parcel(Type.XL, 5)) == -1);
-        assertTrue(new Parcel(Type.Medium, 50).compareTo(new Parcel(Type.Small, 5)) == 1);
+        assertTrue(new Parcel(TYPE.Medium, 3).compareTo(new Parcel(TYPE.Medium, 5)) == -1);
+        assertTrue(new Parcel(TYPE.Medium, 3).compareTo(new Parcel(TYPE.Medium, 3)) == 0);
+        assertTrue(new Parcel(TYPE.Medium, 3).compareTo(new Parcel(TYPE.Medium, 1)) == 1);
+        assertTrue(new Parcel(TYPE.Small, 3).compareTo(new Parcel(TYPE.Medium, 5)) == -1);
+        assertTrue(new Parcel(TYPE.Large, 70).compareTo(new Parcel(TYPE.XL, 5)) == -1);
+        assertTrue(new Parcel(TYPE.Medium, 50).compareTo(new Parcel(TYPE.Small, 5)) == 1);
     }
 
 }
