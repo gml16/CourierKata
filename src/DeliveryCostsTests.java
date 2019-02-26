@@ -25,7 +25,7 @@ public class DeliveryCostsTests {
         parcels.add(new Parcel(Type.XL));
         Delivery delivery = new Delivery(parcels);
 
-        assertEquals(delivery.calculateTotalCost(), 64);
+        assertEquals(delivery.calculateTotalCost(), 89);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class DeliveryCostsTests {
         parcels.add(new Parcel(Type.XL));
         Delivery delivery = new Delivery(parcels, true);
 
-        assertEquals(delivery.calculateTotalCost(), 50);
+        assertEquals(delivery.calculateTotalCost(), 100);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class DeliveryCostsTests {
         parcels.add(new Parcel(Type.XL));
         Delivery delivery = new Delivery(parcels, true);
 
-        assertEquals(delivery.calculateTotalCost(), 118);
+        assertEquals(delivery.calculateTotalCost(), 168);
     }
 
     @Test
@@ -97,6 +97,18 @@ public class DeliveryCostsTests {
         Delivery delivery = new Delivery(parcels);
 
         assertEquals(delivery.calculateTotalCost(), 32);
+    }
+
+    @Test
+    public void weightDeliveryCostsMixedWeightsWithXL() {
+        List<Parcel> parcels = new ArrayList<>();
+        parcels.add(new Parcel(Type.Small, 3));
+        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(Type.Large, 30));
+        parcels.add(new Parcel(Type.XL, 60));
+        Delivery delivery = new Delivery(parcels);
+
+        assertEquals(delivery.calculateTotalCost(), 140);
     }
 
 }
