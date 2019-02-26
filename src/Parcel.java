@@ -14,12 +14,23 @@ public class Parcel {
     }
 
     public int getCost() {
+        int cost = 0;
         switch(type){
-            case Small: return 3;
-            case Medium: return 8;
-            case Large: return 15;
-            case XL: return 25;
-            default: return 0;
+            case Small:
+                cost += 3 + Math.max(0, this.weight-1)*2;
+                break;
+            case Medium:
+                cost += 8 + Math.max(0, this.weight-3)*2;
+                break;
+            case Large:
+                cost += 15 + Math.max(0, this.weight-6)*2;
+                break;
+            case XL:
+                cost += 25 + Math.max(0, this.weight-10)*2;
+                break;
+            default:
+                break;
         }
+        return cost;
     }
 }
