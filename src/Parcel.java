@@ -1,4 +1,4 @@
-public class Parcel {
+public class Parcel implements Comparable<Parcel>{
 
     final private Type type;
     final private int weight;
@@ -32,5 +32,31 @@ public class Parcel {
                 break;
         }
         return cost;
+    }
+
+    @Override
+    public int compareTo(Parcel o) {
+        if(this.type == o.type){
+            if (this.weight > o.weight){
+                return 1;
+            }
+            if (this.weight < o.weight){
+                return -1;
+            }
+            if (this.weight == o.weight){
+                return 0;
+            }
+        } else {
+            if (this.type.ordinal() > o.type.ordinal()){
+                return 1;
+            }
+            if (this.type.ordinal() < o.type.ordinal()){
+                return -1;
+            }
+            if (this.type.ordinal() == o.type.ordinal()){
+                return 0;
+            }
+        }
+        return 0;
     }
 }
