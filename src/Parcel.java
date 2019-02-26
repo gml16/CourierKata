@@ -1,9 +1,16 @@
 public class Parcel {
 
-    private Type type;
+    final private Type type;
+    final private int weight;
 
     public Parcel(Type type) {
         this.type = type;
+        this.weight = 0;
+    }
+
+    public Parcel(Type type, int weight) {
+        this.type = type;
+        this.weight = weight;
     }
 
     public int getCost() {

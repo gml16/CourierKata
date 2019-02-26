@@ -79,5 +79,24 @@ public class DeliveryCostsTests {
         assertEquals(fastDelivery.calculateTotalCost(), 46);
     }
 
+    @Test
+    public void weightDeliveryCostsOverWeight() {
+        List<Parcel> parcels = new ArrayList<>();
+        parcels.add(new Parcel(Type.Small, 3));
+        Delivery delivery = new Delivery(parcels);
+
+        assertEquals(delivery.calculateTotalCost(), 7);
+    }
+
+    @Test
+    public void weightDeliveryCostsMixedWeights() {
+        List<Parcel> parcels = new ArrayList<>();
+        parcels.add(new Parcel(Type.Small, 3));
+        parcels.add(new Parcel(Type.Medium, 4));
+        parcels.add(new Parcel(Type.Large, 2));
+        Delivery delivery = new Delivery(parcels);
+
+        assertEquals(delivery.calculateTotalCost(), 32);
+    }
 
 }
