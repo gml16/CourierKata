@@ -40,7 +40,7 @@ public class Parcel implements Comparable<Parcel>{
 
     @Override
     public String toString(){
-        return "Parcel " + this.type + " has weight " + weight;
+        return this.type  + " parcel weighing " + weight + "kg";
     }
 
     @Override

@@ -21,8 +21,6 @@ public class Delivery {
         List<Parcel> orders = new ArrayList<>(this.parcels);
         Collections.sort(orders);
         Collections.reverse(orders);
-
-        System.out.println(orders);
         int res = 0;
         int smalls = 0;
         int mediums = 0;
