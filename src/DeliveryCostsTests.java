@@ -35,4 +35,36 @@ public class DeliveryCostsTests {
 
         assertEquals(delivery.calculateTotalCost(), 0);
     }
+
+    @Test
+    public void fastDeliveryCostsSmall() {
+        List<Parcel> parcels = new ArrayList<>();
+        parcels.add(new Parcel(Type.XL));
+        Delivery delivery = new Delivery(parcels, true);
+
+        assertEquals(delivery.calculateTotalCost(), 50);
+    }
+
+    @Test
+    public void fastDeliveryCostsMultipleItems() {
+        List<Parcel> parcels = new ArrayList<>();
+        parcels.add(new Parcel(Type.Small));
+        parcels.add(new Parcel(Type.Medium));
+        parcels.add(new Parcel(Type.Large));
+        parcels.add(new Parcel(Type.Medium));
+        parcels.add(new Parcel(Type.XL));
+        Delivery delivery = new Delivery(parcels, true);
+
+        assertEquals(delivery.calculateTotalCost(), 118);
+    }
+
+    @Test
+    public void fastDeliveryCostsNoItem() {
+        List<Parcel> parcels = new ArrayList<>();
+        Delivery delivery = new Delivery(parcels, true);
+
+        assertEquals(delivery.calculateTotalCost(), 0);
+    }
+
+
 }
